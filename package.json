@@ -1,0 +1,27 @@
+{
+    "name":"wolf",
+    "description":"A solution for a group of people use webchat without cards",
+    "version":"0.0.1",
+    "contributors":[
+       {
+            "name":"wu haifeng",
+            "email":"wuhaifengdhu@163.com"
+       },
+       {
+            "name":"yue ying",
+            "email":""
+       }
+    ],
+    "license":"MIT",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/wuhaifengdhu/wolf"
+    },
+    "keywords":[
+        "wolf",
+        "webchat"
+    ],
+    "dependencies":{
+        "node-xml":"~1.0.2"
+    }
+}
