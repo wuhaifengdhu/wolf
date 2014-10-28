@@ -22,6 +22,7 @@
         "webchat"
     ],
     "dependencies":{
-        "node-xml":"~1.0.2"
+        "weixin-robot":"~0.5.7",
+        "express":"4.10.0"
     }
 }
