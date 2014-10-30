@@ -3,31 +3,26 @@ var webot = require('weixin-robot');
 
 var app = express();
 
-// 指定回复消息
-webot.set('hi', '你好');
-
-webot.set('subscribe', {
-  pattern: function(info) {
-    return info.is('event') && info.param.event === 'subscribe';
-  },
-  handler: function(info) {
-    return '欢迎订阅微信机器人';
-  }
-});
-
-webot.set('test', {
-  pattern: /^test/i,
-  handler: function(info, next) {
-    next(null, 'roger that!')
-  }
-})
-//测试变量
-
-var i = 0;
-webot.set('int',{
-    pattern: /^int/,
+webot.set('creat room',{
+    pattern: /^wolf$/i,
     handler: function(info){
-        return "int i = " + i;
+        return "创建房间代码";
+    }
+})
+
+
+webot.set("show all player's role list",{
+    pattern: /^list$/,
+    handler: function(info){
+        return "显示所有玩家身份";
+    }
+})
+
+
+webot.set('enter hourse number',{
+    pattern: /^\d+$/,
+    handler: function(info){
+        return "分配给用户角色";
     }
 })
 
