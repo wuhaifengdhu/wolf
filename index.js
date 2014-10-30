@@ -1,6 +1,6 @@
 var express = require('express');
 var webot = require('weixin-robot');
-var room = require('./lib/room');
+var Room = require('./lib/room');
 
 var app = express();
 
@@ -24,6 +24,7 @@ function parse(cmd_str){
 webot.set('creat room',{
     pattern: /^create/i,
     handler: function(info){ //return the message you want to send back to user
+        room = new Room();
         var cmd_str = info.text;
         var list = parse(cmd_str);
         return room.create(list.role_list, list.num_list);
@@ -49,9 +50,9 @@ webot.set('enter hourse number',{
     }
 })
 
-
 // 接管消息请求
 webot.watch(app, { token: 'wolf', path: '/wechat' });
+
 
 // 启动 Web 服务
 // 微信后台只允许 80 端口
