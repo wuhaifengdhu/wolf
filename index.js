@@ -21,6 +21,13 @@ webot.set('test', {
     next(null, 'roger that!')
   }
 })
+//测试变量
+webot.set('int',{
+    pattern: /^int$/,
+    handler: function(info){
+        return "int i = " + i;
+    }
+})
 
 
 // 接管消息请求
