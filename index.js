@@ -22,8 +22,10 @@ webot.set('test', {
   }
 })
 //测试变量
+
+var i = 0;
 webot.set('int',{
-    pattern: /^int$/,
+    pattern: /^int/,
     handler: function(info){
         return "int i = " + i;
     }
