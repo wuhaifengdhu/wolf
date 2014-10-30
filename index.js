@@ -22,7 +22,8 @@ webot.set("show all player's role list",{
 webot.set('enter hourse number',{
     pattern: /^\d+$/,
     handler: function(info){
-        return "分配给用户角色";
+	var user = info.uid
+        return "分配给" + user + "用户角色";
     }
 })
 
@@ -33,4 +34,4 @@ webot.watch(app, { token: 'wolf', path: '/wechat' });
 // 启动 Web 服务
 // 微信后台只允许 80 端口
 app.listen(80);
-
+console.log('listening on port 80')
