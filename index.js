@@ -12,6 +12,7 @@ function parse(cmd_str){
         for(var i = 1, l = arr.length; i < l; i+=2){
             lista[count] = arr[i];
             listb[count] = arr[i + 1]
+            count++;
         }
     }
     var result = {};
@@ -41,7 +42,7 @@ webot.set("show all player's role list",{
 
 
 webot.set('enter hourse number',{
-    pattern: /^\d+$/,
+    pattern: /^\d+/,
     handler: function(info){ //return the message you want to send back to user
         var arr = info.text.split(' ');
         if(arr.length != 2) return '输入有误， 输入格式："房间号 你的名字"';
