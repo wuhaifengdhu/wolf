@@ -20,3 +20,15 @@ A small project to help web chat user to enjoying play wolf killer without cards
     村民：无特殊权限
     女巫：无特殊权限
     ……
+    
+    
+    
+    应用示例：
+    任何人输入：create 狼人 3 村民 2 先知 1 女巫 1
+    返回：房间号1234
+    
+    其他人输入：1234 myname
+    返回角色：狼人
+    
+    上帝输入：list
+    返回玩家角色分配列表
