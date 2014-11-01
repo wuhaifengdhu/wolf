@@ -8,6 +8,20 @@ var room_list = {};
 var user_list = {};
 var user_name_list = {};
 
+webot.set('subscribe', {
+  pattern: function(info) {
+    return info.is('event') && info.param.event === 'subscribe';
+  },
+  handler: function(info) {
+    return '欢迎程序员的狼人杀世界！\n\n常用命令：'
+    +'\n创建房间命令(系统自动加入1个上帝角色，这个不用输入。其他角色自己发挥)：\ncreate 狼人 3 女巫 1 预言家 1 村民 4'
+    +'\n进入房间命令(第一次要输入房间号、空格、不带空格的名字。以后可以只输入房间号):\n1449 小明'
+    +'\n查看角色分配命令（上帝专享):\nlist'
+    +'\n再来一局命令(如果游戏人没变，上帝或者房间创建者可以重新开局）:\nrestart'
+    +'\n重启后其他成员获得新角色命令:\nrole';
+  }
+});
+
 function parse(cmd_str){
     var arr = cmd_str.split(' ');
     if(arr[0].substring(0, 5) == 'creat'){
