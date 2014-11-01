@@ -10,12 +10,15 @@ A solution for playing 'Werewolf' without cards！
 `wolf` 是基于[weixin-robot](https://github.com/wuhaifengdhu/weixin-robot) 模块开发的。
 
 程序安装：
+
 1，拷贝代码到本地。
->git clone https://github.com/wuhaifengdhu/wolf.git
+    >git clone https://github.com/wuhaifengdhu/wolf.git
+    
 2，安装nodejs依赖。
->npm install
+    >npm install
+    
 3,运行。
->node index.js
+    >node index.js
 
 
 微信公众号简介：
@@ -42,5 +45,7 @@ A solution for playing 'Werewolf' without cards！
 
 补充说明：
     1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。
+    
     2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，并且名字不能有空格。上帝查看游戏角色时，会显示这个名字。
-    3再来一局命令，只有房间创建者和上帝可以使用;
+    
+    3,再来一局命令，只有房间创建者和上帝可以使用;
