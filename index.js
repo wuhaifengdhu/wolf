@@ -6,6 +6,7 @@ var app = express();
 
 var room_list = {};
 var user_list = {};
+var user_name_list = {};
 
 function parse(cmd_str){
     var arr = cmd_str.split(' ');
@@ -68,8 +69,18 @@ webot.set('enter hourse number',{
     pattern: /^\d+/,
     handler: function(info){ //return the message you want to send back to user
         var arr = info.text.split(' ');
-        if(arr.length != 2) return '输入有误， 输入格式："房间号 你的名字"';
-        var roomId = arr[0], userName = arr[1];
+        if(arr.length == 1){
+            var roomId = arr[0], userName = user_name_list[info.uid];
+            if(userName == undefined) return '第一次玩，输入房间号的同时请输入你的名字。 输入格式："房间号 你的名字"(名字不能有空格额）'
+        }
+        else if(arr.length == 2){
+            var roomId = arr[0], userName = arr[1];
+            user_name_list[info.uid] = userName;
+        }
+        else{
+            return '输入有误， 输入格式："房间号 你的名字"(名字不能有空格额）';
+        }
+
         console.log('用户'+ userName +'要求加入房间' + roomId);
         var room = room_list[roomId];
         if(room == undefined) return '该房间还没有创建';
