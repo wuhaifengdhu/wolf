@@ -1,34 +1,68 @@
-wolf
-====
+# 程序员的狼人杀 (wolf)
 
-A small project to help web chat user to enjoying play wolf killer without cards.
+[![Build Status](https://api.travis-ci.org/node-webot/weixin-robot.png?branch=master)](https://travis-ci.org/node-webot/weixin-robot) [![repo dependency](https://david-dm.org/node-webot/weixin-robot.png)](https://david-dm.org/node-webot/weixin-robot)
 
-
-解决方案：
-    用户关注公众号，就能一起愉快的玩耍狼人杀。
+##A solution for playing 'Werewolf' without cards！
 
 
+[微信公众平台](http://mp.weixin.qq.com/)提供的[开放信息接口](http://mp.weixin.qq.com/wiki/index.php?title=%E9%A6%96%E9%A1%B5)的自动回复系统。
 
 
-游戏角色：
-    管理员：输入人数和角色分配，创建房间，得到一个房间号，告诉大家。
+`wolf` 是基于[weixin-robot](https://github.com/node-webot/weixin-robot/wiki/%E4%BD%BF%E7%94%A8%E6%AD%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%B8%90%E5%8F%B7) 模块开发的。
 
-    然后人们分别输入房间号和自己的名字，得到各自的角色。
+##程序安装：
 
-    上帝：可以list得到名字和角色。
-    狼人：无特殊权限
-    村民：无特殊权限
-    女巫：无特殊权限
-    ……
+1，拷贝代码到本地。
+
+    >git clone https://github.com/wuhaifengdhu/wolf.git
     
+2，安装nodejs依赖。
+
+    >npm install
     
+3,运行。
+
+    >node index.js
+
+
+##微信公众号简介：
+
+如果一群人围在一起想玩狼人杀却发现没有带狼人杀的牌，是不是很蛋疼？那么就由我们这个小机器人将给你一个非常舒适的解决方式。
+任何一个人通过命令创建一个房间，得到一个房间号，其他人输入房间号和自己的名字，就能获得自己的角色了。然后就可以愉快的游戏了。
+
+
+添加微信帐号，试试效果：
+
+![微信公众号帐号：moonlight_melody](http://m1.img.srcdd.com/farm4/d/2014/1101/14/50D93ED12176EFF4FCDDD449D14C5F90_B500_900_344_344.jpeg)
+
+
+##常用命令：
+
+    创建房间命令：
     
-    应用示例：
-    任何人输入：create 狼人 3 村民 2 先知 1 女巫 1
-    返回：房间号1234
+        >create 狼人 3 女巫 1 预言家 1 村民 4
+        
+    进入房间命令：
     
-    其他人输入：1234 myname
-    返回角色：狼人
+        >1449 小明
+        
+    上帝查看角色命令：
     
-    上帝输入：list
-    返回玩家角色分配列表
+        >list
+        
+    再来一局命令：
+    
+        >restart
+        
+    房间重启后获得新角色命令：
+    
+        >role
+
+##补充说明：
+
+    1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。
+    
+    2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，
+    并且名字不能有空格。上帝查看游戏角色时，会显示这个名字。
+    
+    3,再来一局命令，只有房间创建者和上帝可以使用;
