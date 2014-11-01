@@ -25,7 +25,7 @@ function parse(cmd_str){
 }
 
 function get_roomId(nowTime){
-    var roomId = Math.floor(Math.random() * 1000);
+    var roomId = Math.floor((1+Math.random()) * 1000);
     var room = room_list[roomId];
     if(room == undefined) return roomId;
     else{
