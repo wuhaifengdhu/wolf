@@ -29,15 +29,15 @@ webot.set('subscribe', {
 
 function parse(cmd_str){
     var arr = cmd_str.split(' ');
-    if(arr[0].substring(0, 5) == 'creat'){
-        var lista = new Array(), listb = new Array();
-        var count = 0;
-        for(var i = 1, l = arr.length; i < l; i+=2){
-            lista[count] = arr[i];
-            listb[count] = arr[i + 1]
-            count++;
-        }
+
+    var lista = new Array(), listb = new Array();
+    var count = 0;
+    for(var i = 1, l = arr.length; i < l; i+=2){
+        lista[count] = arr[i];
+        listb[count] = arr[i + 1]
+        count++;
     }
+
     var result = {};
     result.role_list = lista;
     result.num_list = listb;
