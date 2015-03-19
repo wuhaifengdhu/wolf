@@ -154,7 +154,6 @@ webot.set('player get role again',{
 
 
 webot.set('default reply',{
-    pattern:/^*$/i,
     handler: function(info){
         return '无效的命令\n你可以输入help获取命令列表';
     }
