@@ -152,6 +152,12 @@ webot.set('player get role again',{
     }
 })
 
+webot.set('test to reply picture',{
+    pattern:/^test$/i,
+    handler: function(info){
+        return info.param.lat + ' ' + info.param.lng + ' ' + info.param.label + ' http://haifwu.com:8080/train.gif'
+    }
+})
 
 webot.set('default reply',{
     handler: function(info){
