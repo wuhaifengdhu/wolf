@@ -19,6 +19,7 @@ webot.set('subscribe', {
     +'\n进入房间命令：\n>1449 小明'
     +'\n上帝查看角色命令：\n>list'
     +'\n再来一局命令：\n>restart'
+    +'\n查看本简介：\n>help'
     +'\n房间重启后获得新角色命令：\n>role\n'
     +'\n补充说明：'
     +'\n1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。'
@@ -83,6 +84,23 @@ webot.set("show all player's role list",{
     }
 })
 
+webot.set("show help command list",{
+    pattern: /^help$/i,
+    handler: function(info){ //return the message you want to send back to user
+        return '常用命令及说明\n'
+        +'\n创建房间命令：\n>create 狼人 3 女巫 1 预言家 1 村民 4'
+        +'\n进入房间命令：\n>1449 小明'
+        +'\n上帝查看角色命令：\n>list'
+        +'\n再来一局命令：\n>restart'
+        +'\n查看本简介：\n>help'
+        +'\n房间重启后获得新角色命令：\n>role\n'
+        +'\n补充说明：'
+        +'\n1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。'
+        +'\n2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，并且名字不能有空格。上帝查看游戏角色时，会显示这个名字。'
+        +'\n3,再来一局命令，只有房间创建者和上帝可以使用';
+    }
+})
+
 
 webot.set('enter hourse number',{
     pattern: /^\d+/,
@@ -134,6 +152,13 @@ webot.set('player get role again',{
     }
 })
 
+
+webot.set('default reply',{
+    pattern:/^*$/i,
+    handler: function(info){
+        return '无效的命令\n你可以输入help获取命令列表';
+    }
+})
 
 // 接管消息请求
 webot.watch(app, { token: 'wolf', path: '/wechat' });
