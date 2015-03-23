@@ -153,15 +153,26 @@ webot.set('player get role again',{
 })
 
 webot.set('test to reply picture',{
-    pattern:/^test$/i,
+    pattern:/^picture$/i,
     handler: function(info){
-        info.reply = {
-            title: '消息标题',
+        return {
+            title: '流动的火车',
             url: 'http://haifwu.com:8080/train.gif',
             picUrl: 'http://haifwu.com:8080/train.gif',
-            description: '对消息的描述',
+            description: '火车滴滴答答，消逝的是年华',
         }
-        return;
+    }
+})
+
+webot.set('test to reply picture',{
+    pattern:/^music$/i,
+    handler: function(info){
+        return {
+            title: "来段音乐吧",
+            description: "生如夏花",
+            musicUrl: "http://haifwu.com:8080/life.mp3",
+            hqMusicUrl: "http://haifwu.com:8080/life.mp3"
+        }
     }
 })
 
