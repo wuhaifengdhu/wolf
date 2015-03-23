@@ -155,7 +155,13 @@ webot.set('player get role again',{
 webot.set('test to reply picture',{
     pattern:/^test$/i,
     handler: function(info){
-        return info.param.lat + ' ' + info.param.lng + ' ' + info.param.label + ' http://haifwu.com:8080/train.gif'
+        info.reply = {
+            title: '消息标题',
+            url: 'http://haifwu.com:8080/train.gif',
+            picUrl: 'http://haifwu.com:8080/train.gif',
+            description: '对消息的描述',
+        }
+        return;
     }
 })
 
