@@ -176,6 +176,7 @@ webot.set('test to reply picture',{
     }
 })
 
+require('js-yaml');
 webot.dialog(__dirname + '/rules/dialog.yaml')
 
 webot.set('default reply',{
