@@ -176,6 +176,8 @@ webot.set('test to reply picture',{
     }
 })
 
+webot.dialog(__dirname + '/rules/dialog.yaml')
+
 webot.set('default reply',{
     handler: function(info){
         return '无效的命令\n你可以输入help获取命令列表';
