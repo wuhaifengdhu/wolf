@@ -24,6 +24,8 @@
     "dependencies":{
         "weixin-robot":"~0.5.7",
         "express":"4.10.0",
-	"js-yaml": "~2.0.3"
+        "underscore": "~1.4",
+        "debug": "~0.7.2",
+	    "js-yaml": "~2.0.3"
     }
 }

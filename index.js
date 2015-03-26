@@ -1,6 +1,8 @@
 var express = require('express');
 var webot = require('weixin-robot');
 var Room = require('./lib/room');
+var log = require('debug')('wolf:log');
+var _ = require('underscore')._;
 
 var app = express();
 
@@ -176,6 +178,31 @@ webot.set('test to reply picture',{
     }
 })
 
+webot.waitRule('wait_guess', function(info){
+    var r = Number(info.text);
+
+    if(isNaN(r)){
+        info.resolve();
+        return null;
+    }
+
+    var num = info.session.guess_answer;
+
+    if(r == num){
+        return '你真聪明！';
+    }
+
+    var rewaitCount = info.session.rewait_count || 0;
+
+    if(rewaitCount >= 2){
+        return '怎么这样都猜不出来！答案是 ' + num + '啊！';
+    }
+
+    info.rewait();
+    return (r > num ? '大了' : '小了') + ', 还有 ' + ( 2 - rewaitCount ) + '次机会，再猜.';
+})
+
+
 require('js-yaml');
 webot.dialog(__dirname + '/rules/dialog.yaml')
 
@@ -189,7 +216,24 @@ webot.set('default reply',{
 webot.watch(app, { token: 'wolf', path: '/wechat' });
 
 
-// 启动 Web 服务
-// 微信后台只允许 80 端口
-app.listen(80);
-console.log('listening on port 80')
+
+// 如果需要 session 支持，sessionStore 必须放在 watch 之后
+app.use(express.cookieParser());
+// 为了使用 waitRule 功能，需要增加 session 支持
+app.use(express.session({
+    secret:'abcd123',
+    store: new express.session.MemoryStore()
+}));
+// 在生产环境，你应该将此处的 store 换为某种永久存储。
+// 请参考 http://expressjs.com/2x/guide.html#session-support
+
+// 在环境变量提供的 $PORT 或 3000 端口监听
+var port = process.env.PORT || 2000
+app.listen(port, function(){
+    log("Listening on %s", port);
+})
+
+// 微信接口地址只允许服务放在 80 端口
+// 所以需要做一层 proxy
+app.enable('trust proxy');
+
