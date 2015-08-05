@@ -5,6 +5,7 @@
 
 
 添加微信帐号，试试效果：
+搜索微信公众账号(moonlight_melody)或者扫描以下二维码
 
 ![微信公众号帐号：moonlight_melody](http://m1.img.srcdd.com/farm4/d/2014/1101/14/50D93ED12176EFF4FCDDD449D14C5F90_B500_900_344_344.jpeg)
 
