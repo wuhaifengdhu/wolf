@@ -22,7 +22,7 @@
     "webchat"
   ],
   "dependencies": {
-    "body-parser": "~1.41.1",
+    "body-parser": "~1.14.1",
     "cookie-parser": "^1.4.0",
     "debug": "~0.7.2",
     "express": "4.10.0",
