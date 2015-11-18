@@ -215,15 +215,18 @@ webot.set('default reply',{
 // 接管消息请求
 webot.watch(app, { token: 'wolf', path: '/wechat' });
 
-
-
 // 如果需要 session 支持，sessionStore 必须放在 watch 之后
-app.use(express.cookieParser());
-// 为了使用 waitRule 功能，需要增加 session 支持
-app.use(express.session({
-    secret:'abcd123',
-    store: new express.session.MemoryStore()
+var cookieParser = require('cookie-parser'),
+    expressSession = require('express-session');
+
+app.use(cookieParser());
+app.use(expressSession({
+    secret: 'abcd123',
+    store: new expressSession.MemoryStore(),
+    resave: false,
+    saveUninitialized: true
 }));
+
 // 在生产环境，你应该将此处的 store 换为某种永久存储。
 // 请参考 http://expressjs.com/2x/guide.html#session-support
 
