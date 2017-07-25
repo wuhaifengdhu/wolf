@@ -231,12 +231,12 @@ app.use(expressSession({
 // 请参考 http://expressjs.com/2x/guide.html#session-support
 
 // 在环境变量提供的 $PORT 或 3000 端口监听
-var port = process.env.PORT || 2000
+var port = process.env.PORT || 80
 app.listen(port, function(){
     log("Listening on %s", port);
 })
 
 // 微信接口地址只允许服务放在 80 端口
 // 所以需要做一层 proxy
-app.enable('trust proxy');
+//app.enable('trust proxy');
 
