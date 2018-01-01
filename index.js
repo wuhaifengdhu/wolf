@@ -24,9 +24,9 @@ webot.set('subscribe', {
     +'\n查看本简介：\n>help'
     +'\n房间重启后获得新角色命令：\n>role\n'
     +'\n补充说明：'
-    +'\n1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。'
-    +'\n2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，并且名字不能有空格。上帝查看游戏角色时，会显示这个名字。'
-    +'\n3,再来一局命令，只有房间创建者和上帝可以使用';
+    +'\n1,在创建命令中，角色和数目都可以自由配置。创建者负责组织游戏，即为上帝！'
+    +'\n2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，房间号与名字之间有一个空格，名字中不能有空格。上帝查看游戏角色时，会显示这个名字。'
+    +'\n3,再来一局命令，只有房间创建者（上帝）可以使用';
   }
 });
 
@@ -97,9 +97,9 @@ webot.set("show help command list",{
         +'\n查看本简介：\n>help'
         +'\n房间重启后获得新角色命令：\n>role\n'
         +'\n补充说明：'
-        +'\n1,创建房间时，系统会默认加入一个上帝角色，所以玩家不用输入上帝了。其他玩家可以任意发挥。'
-        +'\n2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，并且名字不能有空格。上帝查看游戏角色时，会显示这个名字。'
-        +'\n3,再来一局命令，只有房间创建者和上帝可以使用';
+        +'\n1,在创建命令中，角色和数目都可以自由配置。创建者负责组织游戏，即为上帝！'
+        +'\n2,第一次进入房间（以后只需输入房间号），请严格按照标准："房间号 名字"输入，房间号与名字之间有一个空格，名字中不能有空格。上帝查看游戏角色时，会显示这个名字。'
+        +'\n3,再来一局命令，只有房间创建者（上帝）可以使用';
     }
 })
 
@@ -110,14 +110,14 @@ webot.set('enter hourse number',{
         var arr = info.text.split(' ');
         if(arr.length == 1){
             var roomId = arr[0], userName = user_name_list[info.uid];
-            if(userName == undefined) return '第一次玩，输入房间号的同时请输入你的名字。 输入格式："房间号 你的名字"(名字不能有空格额）'
+            if(userName == undefined) return '第一次玩，输入房间号的同时请输入你的名字。 输入格式："房间号 你的名字"(房间号与名字之间有一个空格，名字中不能有空格额）'
         }
         else if(arr.length == 2){
             var roomId = arr[0], userName = arr[1];
             user_name_list[info.uid] = userName;
         }
         else{
-            return '输入有误， 输入格式："房间号 你的名字"(名字不能有空格额）';
+            return '输入有误， 输入格式："房间号 你的名字"(房间号与名字之间有一个空格，名字中不能有空格额）';
         }
 
         console.log('用户'+ userName +'要求加入房间' + roomId);
@@ -135,10 +135,10 @@ webot.set('room restart',{
         var roomId = user_list[info.uid];
         if(roomId == undefined) return '你还没有加入任何房间';
         var room = room_list[roomId];
-        if(room_list[roomId] == undefined) return '你所在的房间已经撤销，请重新创建房间';
-        if(room.creator_id != info.uid  && info.uid != room.god_id) return '你不是房间的创建者或上帝，无权重新开始'
+        if(room_list[roomId] == undefined) return '你所在的房间因时间过长已经撤销，请重新创建房间';
+        if(room.creator_id != info.uid  && info.uid != room.god_id) return '你不是房间的创建者（上帝），无权重新开始'
         room.restart();
-        return '房间重启完成！提示大家输入“role”获取新的角色';
+        return '房间重启完成！提示大家输入“role”获取新的角色。';
     }
 })
 
@@ -148,7 +148,7 @@ webot.set('player get role again',{
         var roomId = user_list[info.uid];
         if(roomId == undefined) return '你还没有加入任何房间';
         var room = room_list[roomId];
-        if(room_list[roomId] == undefined) return '你所在的房间已经撤销，请重新创建房间';
+        if(room_list[roomId] == undefined) return '你所在的房间因时间过长已经撤销，请重新创建房间';
 
         return room.regain_role(info.uid);
     }
