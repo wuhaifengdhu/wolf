@@ -24,6 +24,8 @@
 
     >node index.js
 
+服务后台启动：
+    >forever start -l forever.log -o out.log -e err.log index.js
 
 ##微信公众号简介：
 
